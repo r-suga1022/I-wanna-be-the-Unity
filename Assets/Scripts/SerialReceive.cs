@@ -18,16 +18,25 @@ public class SerialReceive : MonoBehaviour
         return accele_value;
     }
 
+    List<string> received_data_list;
+    public Record _record;
+
     void Start()
     {
         //信号を受信したときに、そのメッセージの処理を行う
         serialHandler.OnDataReceived += OnDataReceived;
+        received_data_list = new List<string>();
     }
 
     void Update()
     {
         Quaternion rotation = Quaternion.Euler(ax, az, ay);
         gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, rotation, .25f);
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            _record.LogSave(received_data_list, "received_data", false);
+        }
     }
 
     //受信した信号(message)に対する処理
@@ -36,7 +45,9 @@ public class SerialReceive : MonoBehaviour
         var data = message.Split(
                 new string[] { "\n" }, System.StringSplitOptions.None);
 
-        Debug.Log(data[0]);
+        // Debug.Log(data[0]);
+        received_data_list.Add(data[0]);
+        /*
         string[] data_split = data[0].Split(",");
 
         // ボタンの入力を受け付けたとき
@@ -58,6 +69,7 @@ public class SerialReceive : MonoBehaviour
         string accele_str = data_split[2];
         accele_value = float.Parse(accele_str);
         Debug.Log(accele_value);
+        */
         
         try
         {

@@ -228,6 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serialreceive_: {fileID: 1384891455}
+  hasController: 0
+  degreePerFrame: 0.5
 --- !u!65 &271459254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -641,6 +643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serialreceive_: {fileID: 1384891455}
+  hasController: 0
+  degreePerFrame: 0.1
 --- !u!1001 &1384891454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -695,6 +699,10 @@ PrefabInstance:
     - target: {fileID: 829187520242321392, guid: 02060fb7bbe96654d9b1acdae689b5a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 829187520242321394, guid: 02060fb7bbe96654d9b1acdae689b5a8, type: 3}
+      propertyPath: portName
+      value: COM11
       objectReference: {fileID: 0}
     - target: {fileID: 829187520242321396, guid: 02060fb7bbe96654d9b1acdae689b5a8, type: 3}
       propertyPath: m_Name

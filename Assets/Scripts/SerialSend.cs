@@ -10,13 +10,15 @@ public class SerialSend : MonoBehaviour
     public CharacterStatusScript characterstatus;
 
     int VibrationTimeCount = 0;
+
     void FixedUpdate() //ここは0.001秒ごとに実行される
     {
         //i = i + 1;   //iを加算していって1秒ごとに"1"のシリアル送信を実行
         bool IsDamaged = characterstatus.getIsDamaged();
+        serialHandler.Write("1");
         if (IsDamaged) {
-            serialHandler.Write("1");
-            Debug.Log("sent\n");
+            // serialHandler.Write("1");
+            // Debug.Log("sent\n");
             ++VibrationTimeCount;
             if (VibrationTimeCount == 10) {
                 characterstatus.setIsDamaged(false);
